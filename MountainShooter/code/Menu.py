@@ -1,15 +1,17 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import sys
+
 import pygame.image
-from pygame.surface import Surface
+from pygame import Rect, Surface
 from pygame.font import Font
+
 from code.Const import SCREEN_WIDTH, TEXT_COLOR_MENU, MENU_OPTION, WHITE_COLOR, YELLOW_COLOR
 
 class Menu:
     def __init__(self, screen):
         self.screen: Surface = screen
-        self.suf = pygame.image.load('./asset/MenuBG.png')
+        self.suf = pygame.image.load('./asset/MenuBG.png').convert_alpha()
         self.rect = self.suf.get_rect(left=0, top=0)
 
     def run(self, ):
@@ -51,6 +53,6 @@ class Menu:
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_position: tuple):
         text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
-        text_surf: Surface = text_font.render(text, True, text_color)
+        text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(center=text_position)
         self.screen.blit(source=text_surf, dest=text_rect)
