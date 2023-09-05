@@ -1,14 +1,17 @@
 #!/usr/bin/python
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import pygame
 
-from code.Const import KEY_UP, SCREEN_WIDTH, SCREEN_HEIGHT, KEY_RIGHT, KEY_DOWN, KEY_LEFT, ENTITY_SPEED
+from code.Const import KEY_UP, SCREEN_WIDTH, SCREEN_HEIGHT, KEY_RIGHT, KEY_DOWN, KEY_LEFT, ENTITY_SPEED, KEY_SHOT, \
+    ENTITY_SHOOT_DELAY
 from code.Entity import Entity
+from code.PlayerShot import PlayerShot
 
 
 class Player(Entity):
     def __init__(self, name: str, position: tuple):
         super().__init__(name, position)
+        self.shot_delay = ENTITY_SHOOT_DELAY[self.name]
 
     def move(self):
         pressed_key = pygame.key.get_pressed()
@@ -23,6 +26,19 @@ class Player(Entity):
 
         if pressed_key[KEY_LEFT[self.name]] and self.rect.left > 0:
             self.rect.centerx -= ENTITY_SPEED[self.name]
+
+    def shoot(self):
+        self.shot_delay -= 1
+        if self.shot_delay == 0:
+            self.shot_delay = ENTITY_SHOOT_DELAY[self.name]
+            pressed_key = pygame.key.get_pressed()
+            if pressed_key[KEY_SHOT[self.name]]:
+                return PlayerShot(f'{self.name}Shot', position=(self.rect.centerx, self.rect.centery))
+            else:
+                return None
+        else:
+            return None
+
 
     def update(self):
         self.move()

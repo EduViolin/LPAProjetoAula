@@ -21,10 +21,38 @@ ENTITY_SPEED = {'level1_BG0': 0,
                 'level1_BG4': 4,
                 'level1_BG5': 5,
                 'level1_BG6': 6,
-                'Player1': 3,
+                'Player1': 2,
+                'Player1Shot': 3,
                 'Player2': 3,
+                'Player2Shot': 4,
                 'Enemy1': 2,
-                'Enemy2': 1}
+                'Enemy1Shot': 5,
+                'Enemy2': 1,
+                'Enemy2Shot': 6,
+                }
+
+ENTITY_HEALTH = {'level1_BG0': 999,
+                 'level1_BG1': 999,
+                 'level1_BG2': 999,
+                 'level1_BG3': 999,
+                 'level1_BG4': 999,
+                 'level1_BG5': 999,
+                 'level1_BG6': 999,
+                 'Player1': 300,
+                 'Player1Shot': 1,
+                 'Player2': 300,
+                 'Player2Shot': 1,
+                 'Enemy1': 200,
+                 'Enemy1Shot': 1,
+                 'Enemy2': 200,
+                 'Enemy2Shot': 1,
+                 }
+
+ENTITY_SHOOT_DELAY = {'Player1': 20,
+                      'Player2': 15,
+                      'Enemy1': 30,
+                      'Enemy2': 45,
+                      }
 
 # Teclas para controlar o player
 KEY_UP = {'Player1': pygame.K_w, 'Player2': pygame.K_UP}

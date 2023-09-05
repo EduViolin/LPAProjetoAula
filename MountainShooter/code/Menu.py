@@ -16,6 +16,7 @@ class Menu:
 
     def run(self, ):
         pygame.mixer_music.load('./asset/Menu.wav')
+        pygame.mixer_music.set_volume(0.5)
         pygame.mixer_music.play(-1)
         menu_option = 0
 
