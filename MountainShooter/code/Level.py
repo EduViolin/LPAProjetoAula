@@ -39,6 +39,11 @@ class Level:
                     shoot = ent.shoot()
                     if shoot is not None:
                         self.entity_list.append(shoot)
+
+                if ent.name == 'Player1':
+                    self.level_text(14, f'Player1 - Health: {ent.health} Score: {ent.score}', WHITE_COLOR, (250, 15))
+                if ent.name == 'Player2':
+                    self.level_text(14, f'Player2 - Health: {ent.health} Score: {ent.score}', WHITE_COLOR, (250, 30))
             # desenhando textos
             self.level_text(14, f'fps: {clock.get_fps() :.0f}', WHITE_COLOR, (SCREEN_WIDTH, SCREEN_HEIGHT - 1))
             self.level_text(14, f'Entity list: {len(self.entity_list)}', WHITE_COLOR, (125, SCREEN_HEIGHT - 1))
